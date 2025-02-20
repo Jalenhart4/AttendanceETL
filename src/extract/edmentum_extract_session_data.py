@@ -52,7 +52,7 @@ def print_attendance(student_attendance):
 
 
 # Example usage:
-csv_filename = "../data/LearnerDailyUsageReportByUserAndClass_GroupByLearner_CSV_hartjr@OAED_01292025082928.csv"  # Replace with your actual file path
+csv_filename = "../../data/LearnerDailyUsageReportByUserAndClass_GroupByLearner_CSV_hartjr@OAED_01292025082928.csv"  # Replace with your actual file path
 session_time_threshold = 5  # 5 minutes or greater is the time needed to be counted present
 attendance_data = process_student_sessions(csv_filename,session_time_threshold)
 print_attendance(attendance_data)

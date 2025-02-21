@@ -2,13 +2,6 @@
 This is a Script to Extract student Edmentum sessions for attendance reporting.
 The threshold for if a student is counted as present for that day is if the session last more than 5 minutes
 """
-"""
-Fields: 
-    LearnerFirstName (String), 
-    LearnerLastname (String), 
-    LoginDateTime (DateTime), 
-    LogOutDateTime (DateTime)
-"""
 import csv
 from datetime import datetime
 
@@ -18,15 +11,19 @@ def parse_datetime(datetime_str):
     return datetime.strptime(datetime_str, "%m/%d/%Y %I:%M:%S %p")
 
 
-# noinspection PyTypeChecker
-def process_student_sessions(csv_file,session_threshold):
-    """Processes student session data and records attendance."""
+def extract_student_sessions(csv_file,session_threshold):
+    """ Processes student session data and stores attendance records in dictionary.
+        Fields Extracted:
+            LearnerFirstName (String),
+            LearnerLastname (String),
+            LoginDateTime (DateTime),
+            LogOutDateTime (DateTime)
+    """
     student_attendance = {}
-
     with open(csv_file, mode='r', encoding='utf-8-sig') as file:
         reader = csv.DictReader(file)
         next(reader)
-        print("CSV Headers:", reader.fieldnames)
+        # print("CSV Headers:", reader.fieldnames)
         for row in reader:
             last_name = row["LearnerLastName"]
             first_name = row["LearnerFirstName"].lstrip("\ufeff")
@@ -44,6 +41,7 @@ def process_student_sessions(csv_file,session_threshold):
 
     return student_attendance
 
+def
 
 def print_attendance(student_attendance):
     """Prints the attendance record in a readable format."""
@@ -52,9 +50,7 @@ def print_attendance(student_attendance):
 
 
 # Example usage:
-csv_filename = "../../data/LearnerDailyUsageReportByUserAndClass_GroupByLearner_CSV_hartjr@OAED_01292025082928.csv"  # Replace with your actual file path
+csv_filename = "../../data/raw/edmentum/LearnerDailyUsageReportByUserAndClass_GroupByLearner_CSV_hartjr@OAED_01292025082928.csv"  # Replace with actual file path
 session_time_threshold = 5  # 5 minutes or greater is the time needed to be counted present
-attendance_data = process_student_sessions(csv_filename,session_time_threshold)
+attendance_data = extract_student_sessions(csv_filename,session_time_threshold)
 print_attendance(attendance_data)
-
-"This function Reads all sessions in the Days present Dictionary and Inserts them into a Spreadsheet"

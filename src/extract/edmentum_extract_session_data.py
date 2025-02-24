@@ -49,7 +49,7 @@ def print_attendance(student_attendance):
         print(f"{student}: {sorted(dates)}")
 
 
-# Example usage:
+# Main
 csv_filename = "../../data/raw/edmentum/LearnerDailyUsageReportByUserAndClass_GroupByLearner_CSV_hartjr@OAED_01292025082928.csv"  # Replace with actual file path
 session_time_threshold = 5  # 5 minutes or greater is the time needed to be counted present
 attendance_data = extract_student_sessions(csv_filename,session_time_threshold)

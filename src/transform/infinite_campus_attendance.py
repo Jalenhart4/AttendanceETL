@@ -2,32 +2,25 @@ import pandas as pd
 import csv
 from datetime import datetime
 
-def extract_ic_data(ic_attendance_csv)
-    ic_attendance = {}
-    with open(ic_attendance_csv, mode='r', encoding='utf-8-sig') as att_file:
-        reader = csv.DictReader(att_file)
-        next(reader)
-        for row in reader:
-            personID = row['personID']
-            periodID = row['periodID']
-            status = row['status']
-            excuseIDmodifiedDate = row['excuseIDmodifiedDate']
-            if personID not in
+def extract_ic_data(ic_attendance_csv):
+    # Load the Infinite Campus attendance data into a pandas DataFrame
+    ic_df = pd.read_csv(ic_attendance_csv, encoding='utf-8-sig')
 
+    # Process the data into a dictionary grouped by personID
+    ic_attendance = ic_df.groupby('personID').apply(lambda x: x[['periodID', 'status', 'excuseIDmodifiedDate']].to_dict(orient='records')).to_dict()
 
-def extract_student_demographics(student_demographics_csv)
-    with open(student_demographics_csv, mode='r', encoding='utf-8-sig') as stu_file:
-        student_demographics = {}
-        reader = csv.DictReader(stu_file)
-        next(reader)
-        for row in reader:
-            personID = row['personID']
-            student_number = row['student_number']
-            first_name = row['first_name']
-            last_name = row['last_name']
-            middle_name = row['middle_name']
-            if personID not in student_demographics:
+    return ic_attendance
 
+def extract_student_demographics(student_demographics_csv):
+    # Load the student demographics data into a pandas DataFrame
+    stu_df = pd.read_csv(student_demographics_csv, encoding='utf-8-sig')
+
+    # Create a dictionary with personID as the key
+    student_demographics = stu_df.set_index('personID').to_dict(orient='index')
+
+    return student_demographics
+
+# File paths
 """
 Raw attendance data from infinite campus. 
 Fields extracted:
@@ -48,3 +41,7 @@ Fields extracted:
     middleName (string)
 """
 student_demographics_csv = "../../data/raw/infinite_campus/student_demographics"
+
+# Extract data
+attendance_data = extract_ic_data(ic_attendance_csv)
+student_data = extract_student_demographics(student_demographics_csv)

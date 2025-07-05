@@ -14,12 +14,16 @@ This project automates the extraction, transformation, and loading of student at
 - [Technologies Used](#technologies-used)
 - [Output](#output)
 - [Folder Structure](#folder-structure)
+- [Planned Improvements](#planned-improvements)
+
 
 ---
 
 ## 📌 Project Overview
 
-Schools using both **in-person** attendance systems and **online platforms** (like Edmentum) often struggle to accurately track student attendance. This pipeline reconciles discrepancies by identifying students who were not marked present in-person but were active online long enough to meet a custom threshold.
+Schools using both **in-person attendance systems** and **online learning platforms** (like Edmentum) often struggle to maintain accurate, unified attendance records—especially for hybrid or remote learners. This pipeline was developed to reconcile discrepancies by identifying students who were not marked present in-person but were active online for a sufficient amount of time (e.g., 10 minutes).
+
+The solution was designed to support **weekly reporting** for school leadership by automating the consolidation of attendance data into a single, structured file. This improved visibility into overall attendance patterns and reduced the reliance on manual processes across systems.
 
 ---
 

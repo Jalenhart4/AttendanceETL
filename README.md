@@ -32,6 +32,7 @@ The solution was designed to support **weekly reporting** for school leadership 
 - Automatically extract and clean data from multiple platforms
 - Detect and flag students who should be marked present based on online activity
 - Generate a clean, SIS-ready `.csv` file for batch attendance updates
+- Support **weekly attendance reporting** to school leadership by enabling repeatable and automated data refreshes  
 
 ---
 

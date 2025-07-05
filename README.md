@@ -2,6 +2,8 @@
 
 This project automates the extraction, transformation, and loading of student attendance data from multiple sources to produce a clean, consolidated CSV for upload into a Student Information System (SIS).
 
+> ⚠️ **Note:** This project is a work in progress. Core functionality and integration logic are still being developed.
+
 ---
 
 ## 📑 Table of Contents

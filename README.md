@@ -66,6 +66,17 @@ Schools using both **in-person** attendance systems and **online platforms** (li
 
 ---
 
+## 📤 Output
+
+A final `.csv` file is generated, ready for upload into the SIS. Each record includes:
+
+- Student ID  
+- Date  
+- Attendance status (present/absent)  
+- Source of presence (in-person or virtual)  
+
+---
+
 ## 📁 Folder Structure
 
 ```
@@ -88,14 +99,23 @@ attendance-etl/
 
 ---
 
-## 📤 Output
+## 🚀 Planned Improvements
 
-A final `.csv` file is generated, ready for upload into the SIS. Each record includes:
+While this project is still in progress, the following improvements were planned to enhance automation, scalability, and maintainability:
 
-- Student ID  
-- Date  
-- Attendance status (present/absent)  
-- Source of presence (in-person or virtual)  
+- **Cloud Deployment**  
+  Convert the ETL script into an AWS Lambda function to run on a scheduled basis (e.g., weekly via CloudWatch Events or EventBridge).
+
+- **Database Integration**  
+  Store attendance records in a cloud-based database such as **Amazon DynamoDB**, partitioned by `student_id` and sorted by `date` for fast querying and dashboard integration.
+
+- **One-Time Legacy Data Import**  
+  Process the manually tracked attendance from the Google Sheet once and merge it into the final system for historical completeness.
+
+- **Dashboard or API Layer** *(future idea)*  
+  Expose attendance data via a simple internal dashboard or API for school staff to review attendance history without relying on spreadsheets.
+
+
 
 ---
 
